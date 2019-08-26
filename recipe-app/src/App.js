@@ -34,20 +34,24 @@ const App = () => {
 
   return(
     <div className="App">
+      <h1 className="site-name">bakible</h1>
       <form onSubmit={getSearch} className="search-form">
-        <input className="search-bar" type="text" value={search} onChange={updateSearch} />
+        <input className="search-bar" type="text" placeholder="Enter keywords here" value={search} onChange={updateSearch} />
         <button className="search-button" type="submit">
           Search
         </button>
       </form>
+      <div className="recipes">
       {recipes.map(recipe => (
         <Recipe 
           key={recipe.recipe.label}
           title={recipe.recipe.label} 
-          calories={recipe.recipe.calories}
+          calories={Math.round(recipe.recipe.calories)}
           image={recipe.recipe.image}
+          ingredients={recipe.recipe.ingredients}
         />
       ))}
+      </div>
     </div>
   );
 };
